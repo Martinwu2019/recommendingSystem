@@ -1,10 +1,10 @@
 "# recommendingSystem" 
-"Vietnamese Cuisine Recommendation System"
-•	Project Summary: Tailored to suggest Vietnamese specialties to users, this project harnesses Python and the Django framework, coupled with frontend tech like HTML, CSS, and JavaScript for crafting the user interface. It integrates JSON for data storage at the backend. Notably, it showcases a wealth of Vietnamese food info and elevates user experience through an advanced collaborative filtering algorithm that personalizes recommendations.
-•	Main Tasks Undertaken:
-    System Design & Execution: Leveraged Django to implement an MVC structure, designing and realizing modules for user management, food info handling, and the core logic of the recommendation algorithm. This setup ensured the system is highly scalable and easy to maintain.
-    Recommendation Algorithm & Data Processing: Developed a collaborative filtering algorithm grounded in user behavior data, which personalized suggestions by calculating user similarity. Managed a substantial amount of user liking data, cleaning and analyzing it with Python before storing in JSON files. This approach optimized data handling and query speed with a lightweight solution.
-    User Interface & Interaction Improvement: Created a straightforward, user-friendly frontend with features for displaying dishes, user reviews, and personalized recommendation lists. Enhanced user engagement by utilizing HTML/CSS/JavaScript alongside the Echarts library for data visualization, making user preference trends vividly clear.
+**Vietnamese Cuisine Recommendation System**
+-- Project Summary: Tailored to suggest Vietnamese specialties to users, this project harnesses Python and the Django framework, coupled with frontend tech like HTML, CSS, and JavaScript for crafting the user interface. It integrates JSON for data storage at the backend. Notably, it showcases a wealth of Vietnamese food info and elevates user experience through an advanced collaborative filtering algorithm that personalizes recommendations.
+-- Main Tasks Undertaken:
+-System Design & Execution: Leveraged Django to implement an MVC structure, designing and realizing modules for user management, food info handling, and the core logic of the recommendation algorithm. This setup ensured the system is highly scalable and easy to maintain.
+- Recommendation Algorithm & Data Processing: Developed a collaborative filtering algorithm grounded in user behavior data, which personalized suggestions by calculating user similarity. Managed a substantial amount of user liking data, cleaning and analyzing it with Python before storing in JSON files. This approach optimized data handling and query speed with a lightweight solution.
+- User Interface & Interaction Improvement: Created a straightforward, user-friendly frontend with features for displaying dishes, user reviews, and personalized recommendation lists. Enhanced user engagement by utilizing HTML/CSS/JavaScript alongside the Echarts library for data visualization, making user preference trends vividly clear.
 
 《越南美食推荐系统》
 -- 项目概述：为用户个性化推荐越南特色美食。此项目基于Python语言和Django框架，采用前端技术（HTML, CSS, JavaScript）构建用户界面，后端集成JSON数据存储。系统不仅展示了丰富的越南美食信息，还通过先进的协同过滤算法实现了个性化推荐功能，提升了用户体验。
