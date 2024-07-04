@@ -1,5 +1,5 @@
-"# recommendingSystem" 
 **Vietnamese Cuisine Recommendation System**
+
 -- Project Summary: Tailored to suggest Vietnamese specialties to users, this project harnesses Python and the Django framework, coupled with frontend tech like HTML, CSS, and JavaScript for crafting the user interface. It integrates JSON for data storage at the backend. Notably, it showcases a wealth of Vietnamese food info and elevates user experience through an advanced collaborative filtering algorithm that personalizes recommendations.
 -- Main Tasks Undertaken:
 -System Design & Execution: Leveraged Django to implement an MVC structure, designing and realizing modules for user management, food info handling, and the core logic of the recommendation algorithm. This setup ensured the system is highly scalable and easy to maintain.
