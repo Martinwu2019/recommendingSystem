@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/register.css">
+</head>
+<body>
+    <div class="box">
+        <span class="borderLine"></span>
+        <form action="{% url 'APP:check_register' %}" method="post">
+            {% csrf_token %}
+          <h2>注册</h2>
+          <div class="inputBox">
+            <input type="text" required name="user_name">
+            <span>用户名</span><i></i>
+          </div>
+          <div class="inputBox">
+            <input type="password" required name="user_password">
+            <span>密码</span><i></i>
+          </div>
+            {% if succeed %}
+                <p style="color: green"><i>注册成功请前往<a href="{% url 'APP:login' %}">登录</a>页面</i></p>
+            {% endif %}
+        {% if error %}
+        	<p style="color: red"><i>用户名已经存在，请重新输入</i></p>
+        {% endif %}
+          <input type="submit" value="注册">
+        </form>
+      </div>
+</body>
+</html>

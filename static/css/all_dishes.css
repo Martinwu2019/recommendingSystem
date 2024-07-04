@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* 设置导航栏的样式 */
+.navbar {
+    background-color: #333; /* 设置背景颜色为黑色 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    top: 0; /* 设置导航栏在顶部 */
+    width: 100%; /* 设置导航栏的宽度为 100% */
+  }
+
+  /* 设置导航栏内的链接列表的样式 */
+  .navlist {
+    list-style: none; /* 去除列表的标记 */
+    margin: 0; /* 去除列表的外边距 */
+    padding: 0; /* 去除列表的内边距 */
+  }
+
+  /* 设置导航栏内的链接的样式 */
+  .navlist li a {
+    color: #f2f2f2; /* 设置链接的颜色为白色 */
+    display: block; /* 设置链接为块级元素 */
+    float: left; /* 设置链接为左浮动 */
+    font-size: 15px; /* 设置链接的字体大小为 15px */
+    padding: 14px 16px; /* 设置链接的内边距为 14px 上下，16px 左右 */
+    text-align: center; /* 设置链接的文本居中 */
+    text-decoration: none; /* 去除链接的下划线 */
+  }
+
+  /* 设置鼠标悬停时链接的样式 */
+  .navlist li a:hover {
+    background-color: #ddd; /* 设置链接的背景颜色为灰色 */
+    color: black; /* 设置链接的颜色为黑色 */
+  }
+
+  /* 设置当前页面的链接的样式 */
+  .navlist li a.active {
+    background-color: #4CAF50; /* 设置链接的背景颜色为绿色 */
+    color: white; /* 设置链接的颜色为白色 */
+  }
+
+  /* 设置导航栏内的越南美食推荐系统的文字的样式 */
+  .navlist li span.recommend {
+    color: #f2f2f2; /* 设置文字的颜色为白色 */
+    display: block; /* 设置文字为块级元素 */
+    float: left; /* 设置文字为左浮动 */
+    font-size: 17px; /* 设置文字的字体大小为 17px */
+    font-weight: bold; /* 设置文字为粗体 */
+    padding: 14px 16px; /* 设置文字的内边距为 14px 上下，16px 左右 */
+    text-align: center; /* 设置文字的文本居中 */
+  }
+    /* 子元素字样 */
+ .navlist li .daughter_element{
+   font-size: 14px; /* 设置文字的字体大小为 17px */
+ }
+
+  /* 设置登录信息区域的样式 */
+  .login-info {
+    float: right; /* 设置登录信息区域为右浮动 */
+  }
+
+  /* 设置登录信息区域内的元素的样式 */
+  .login-info span {
+    color: #f2f2f2; /* 设置元素的颜色为白色 */
+    display: block; /* 设置元素为块级元素 */
+    float: left; /* 设置元素为左浮动 */
+    font-size: 17px; /* 设置元素的字体大小为 17px */
+    padding: 14px 16px; /* 设置元素的内边距为 14px 上下，16px 左右 */
+    text-align: center; /* 设置元素的文本居中 */
+    text-decoration: none; /* 去除元素的下划线 */
+  }
+
+  /* 隐藏应该在小屏幕上打开和关闭导航栏的图标 */
+  .icon {
+    display: none; /* 设置图标为不可见 */
+  }
+
+  /* 当屏幕宽度小于 600 像素时，隐藏所有链接，除了第一个（“越南美食推荐系统”）。 显示包含应打开和关闭导航栏的图标 */
+  @media screen and (max-width: 600px) {
+    .navlist li a, .navlist li span.recommend:not(:first-child) {
+      display: none; /* 隐藏非第一个链接和文字 */
+    }
+    .icon {
+      display: block; /* 显示图标 */
+      float: right; /* 设置图标为右浮动 */
+    }
+  }
+
+  /* 当用户点击图标时，显示所有链接 */
+  @media screen and (max-width: 600px) {
+    .navbar.responsive {
+      position: relative; /* 设置导航栏为相对定位 */
+    }
+    .navbar.responsive .icon {
+      position: absolute; /* 设置图标为绝对定位 */
+      right: 0; /* 设置图标在右侧 */
+      top: 0; /* 设置图标在顶部 */
+    }
+    .navbar.responsive .navlist li a, .navbar.responsive .navlist li span.recommend {
+      display: block; /* 显示所有链接和文字 */
+      float: none; /* 取消链接和文字的浮动 */
+      text-align: left; /* 设置链接和文字的文本左对齐 */
+    }
+    .navbar.responsive .login-info {
+      float: none; /* 取消登录信息区域的浮动 */
+    }
+    .navbar.responsive .login-info span {
+      float: none; /* 取消登录信息区域内的元素的浮动 */
+    }
+  }
+
+/*展示图片功能*/
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none; /* 添加这一行 */
+}
+
+.item {
+  width: 23%;
+  height: 200px; /* 添加这一行 */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.3s;
+}
+
+.item:hover img {
+  opacity: 0.7;
+}
+
+.item .name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+.item .like { /* 添加这一段 */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.item .like.active { /* 添加这一段 */
+  color: #f00;
+}
+
+/*翻转图片功能*/
+/* 设置flip-box的宽度、高度和透视效果 */
+.flip-box {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+/* 设置flip-box-inner的位置、宽度、高度、居中对齐、过渡效果和3D变换 */
+.flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* 设置flip-box-front和flip-box-back的位置、宽度、高度和背面隐藏 */
+.flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* 设置flip-box-front的背景颜色和颜色 */
+.flip-box-front {
+    background-color: #bbb;
+    color: black;
+}
+
+/* 设置flip-box-back的背景颜色、颜色和旋转180度 */
+.flip-box-back {
+    background-color: pink;
+    color: white; /* 设置文字颜色为白色 */
+    font-weight: bold; /* 设置文字粗体 */
+    text-align: center; /* 设置文字居中对齐 */
+    text-shadow: 2px 2px 4px black; /* 设置文字阴影 */
+    transform: rotateY(180deg);
+}
+
+/*搜索功能*/
+  /* 设置容器的样式 */
+  .container2 {
+    max-width: 600px; /* 最大宽度为600px */
+    margin: 0 auto; /* 左右居中 */
+  }
+
+  /* 设置搜索框的样式 */
+  .search-box {
+    position: relative; /* 相对定位 */
+    margin-top: 20px; /* 上边距为20px */
+      margin-bottom: 20px; /* 上边距为20px */
+  }
+
+  /* 设置输入框的样式 */
+  .search-input {
+    width: 100%; /* 宽度为100% */
+    height: 40px; /* 高度为40px */
+    padding: 10px 20px; /* 内边距为10px 20px */
+    border: 1px solid #ccc; /* 边框为1px实线，颜色为灰色 */
+    border-radius: 20px; /* 边框圆角为20px */
+    font-size: 18px; /* 字体大小为18px */
+    outline: none; /* 去掉轮廓 */
+  }
+
+  /* 设置图标的样式 */
+  .search-icon {
+    position: absolute; /* 绝对定位 */
+    right: 30px; /* 距离右边30px */
+    top: 50%; /* 距离上边50% */
+    transform: translate(0, -50%); /* 垂直居中 */
+    cursor: pointer; /* 鼠标样式为指针 */
+  }
+
+  /* 去掉搜索图标的灰色背景 */
+  .search-icon:hover {
+    background-color: transparent; /* 背景颜色为透明 */
+    border: none; /* 去掉边框 */
+  }
+
+  /* 去掉输入框的x号 */
+  .search-input::-webkit-search-cancel-button {
+    display: none; /* 隐藏元素 */
+  }

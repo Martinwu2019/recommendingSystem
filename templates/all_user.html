@@ -1,0 +1,74 @@
+{% load my_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/all_user.js"></script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/all_user.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/food_single.css">
+    <title>喜欢列表</title>
+    <!-- 加载图标库以在小屏幕上显示汉堡菜单（栏） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- 创建一个导航栏容器 -->
+<div class="navbar" id="myNavbar">
+    <!-- 创建一个链接列表 -->
+    <ul class="navlist">
+        <!-- 创建一个越南美食推荐系统的文字 -->
+        <li><span class="recommend">越南美食推荐系统</span></li>
+        <!-- 创建一个链接到所有菜品展览的链接 -->
+        <li><a href="{% url 'APP:all_dishes' %}">所有菜品展览</a></li>
+        <!-- 创建一个链接到数据可视化的链接 -->
+        <li><a href="{% url 'APP:data_visualization' %}">数据可视化</a></li>
+        <!-- 创建一个链接到所有用户喜欢列表的链接 -->
+        <li><a href="{% url 'APP:all_user' %}">喜欢列表
+            <hr>
+        </a></li>
+        <!-- 创建一个链接到猜您喜欢的链接 -->
+        <li><a href="{% url 'APP:guess_youlike' %}">猜您喜欢</a></li>
+    </ul>
+    <!-- 创建一个登录信息区域 -->
+    <div class="login-info">
+        <!-- 如果用户已登录，显示用户名 -->
+        {% if user_name %}
+            <span id="username">您好，{{ user_name }}&nbsp<a href="{% url 'APP:logout' %}"
+                                                            style="color: white">退出登录</a></span>
+        {% else %}
+            <span id="username"><a href="{% url 'APP:login' %}" style="color: white">请先登录</a></span>
+        {% endif %}
+
+    </div>
+    <!-- 创建一个图标，用于在小屏幕上打开和关闭导航栏 -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+<div class="container">
+    <div class="header">
+        <ul class="nav">
+            <li><h2>{{ user_name }}</h2></li>
+        </ul>
+    </div>
+    <div class="main">
+        {% for food_name,food_path in items %}
+            <div class="card">
+                <img src="{{ food_path }}" alt="{{ food_name }}"> <!-- 这里是美食的图片 -->
+                <h3>{{ food_name }}</h3> <!-- 这里是美食的名称 -->
+                <p>{{ food_introduction|get_item:food_name }}</p> <!-- 这里是美食的简介 -->
+                {% if food_name in like_food_list %}
+                    <span class="like active" data-id="{{ food_name }}">❤</span>
+                {% else %}
+                    <span class="like" data-id="{{ food_name }}">❤</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+</body>
+</html>

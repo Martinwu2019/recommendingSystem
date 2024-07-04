@@ -1,0 +1,77 @@
+* {
+      box-sizing: border-box; /* 让元素的宽度和高度包括内边距和边框 */
+      margin: 0; /* 去掉元素的默认外边距 */
+      padding: 0; /* 去掉元素的默认内边距 */
+    }
+.like {
+    /* 这里是您想要应用的样式 */
+    color: #ccc;
+    font-size: 20px; /* 将❤的大小设置为20像素 */
+    cursor: pointer; /* 当鼠标悬停在❤上时，将光标更改为手形 */
+}
+.like.active {
+    /* 这里是您想要在用户点击❤后应用的样式 */
+    color: red; /* 例如，将点击后的❤颜色设置为蓝色 */
+}
+
+.container {
+  max-width: 1200px; /* 设置容器的最大宽度 */
+  margin: 0 auto; /* 让容器水平居中 */
+  padding: 20px; /* 给容器添加一些内边距 */
+}
+.header {
+  display: flex; /* 让头部元素水平排列 */
+  align-items: center; /* 让头部元素垂直居中 */
+  justify-content: space-between; /* 让头部元素两端对齐 */
+}
+.logo {
+  width: 100px; /* 设置logo的宽度 */
+  height: 100px; /* 设置logo的高度 */
+}
+.nav {
+  display: flex; /* 让导航元素水平排列 */
+  list-style: none; /* 去掉列表的默认样式 */
+}
+.nav li {
+  margin-left: 20px; /* 给列表项添加左边距 */
+}
+.nav a {
+  text-decoration: none; /* 去掉链接的下划线 */
+  color: black; /* 设置链接的颜色 */
+  font-size: 20px; /* 设置链接的字体大小 */
+}
+.nav a:hover {
+  color: red; /* 设置鼠标悬停时的颜色 */
+}
+.main {
+  display: grid; /* 让主要内容使用网格布局 */
+  grid-template-columns: repeat(4, 1fr); /* 将网格分为四列，每列占相同的空间 */
+  grid-gap: 20px; /* 设置网格之间的间隙 */
+  margin-top: 20px; /* 给主要内容添加上边距 */
+}
+.card {
+  border: 1px solid black; /* 给卡片添加边框 */
+  padding: 10px; /* 给卡片添加内边距 */
+  text-align: center; /* 让卡片中的文本居中 */
+}
+.card img {
+  width: 100%; /* 设置图片的宽度为卡片的宽度 */
+  height: 200px; /* 设置图片的高度 */
+  object-fit: cover; /* 让图片保持比例并填充卡片 */
+}
+.card h3 {
+  margin-top: 10px; /* 给标题添加上边距 */
+  font-size: 24px; /* 设置标题的字体大小 */
+}
+.card p {
+  margin-top: 10px; /* 给段落添加上边距 */
+  font-size: 18px; /* 设置段落的字体大小 */
+}
+.footer {
+  margin-top: 20px; /* 给页脚添加上边距 */
+  text-align: center; /* 让页脚中的文本居中 */
+  font-size: 16px; /* 设置页脚的字体大小 */
+ /*爱心样式*/
+
+
+}

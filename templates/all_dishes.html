@@ -1,0 +1,97 @@
+{% load my_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/all_dishes.js"></script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/all_dishes.css">
+    <title>所有菜品展览</title>
+        <!-- 加载图标库以在小屏幕上显示汉堡菜单（栏） -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- 创建一个导航栏容器 -->
+<div class="navbar" id="myNavbar">
+  <!-- 创建一个链接列表 -->
+  <ul class="navlist">
+    <!-- 创建一个越南美食推荐系统的文字 -->
+    <li><span class="recommend">越南美食推荐系统</span></li>
+    <!-- 创建一个链接到所有菜品展览的链接 -->
+    <li><a href="{% url 'APP:all_dishes' %}">所有菜品展览<hr></a></li>
+      <li><a href="{% url 'APP:food_drink' %}" class="daughter_element">饮品</a></li>
+      <li><a href="{% url 'APP:food_staple' %}" class="daughter_element">主食</a></li>
+      <li><a href="{% url 'APP:food_dishes' %}" class="daughter_element">菜品</a></li>
+      <li><a href="{% url 'APP:food_dessert' %}" class="daughter_element">甜点</a></li>
+    <!-- 创建一个链接到数据可视化的链接 -->
+    <li><a href="{% url 'APP:data_visualization' %}">数据可视化</a></li>
+    <!-- 创建一个链接到所有用户喜欢列表的链接 -->
+    <li><a href="{% url 'APP:all_user' %}">喜欢列表</a></li>
+    <!-- 创建一个链接到猜您喜欢的链接 -->
+    <li><a href="{% url 'APP:guess_youlike' %}">猜您喜欢</a></li>
+      {% if Administrator %}
+            <!-- 上传文件 -->
+        <li><a href="{% url 'APP:add_image' %}">添加美食</a></li>
+      {% endif %}
+  </ul>
+  <!-- 创建一个登录信息区域 -->
+  <div class="login-info">
+    <!-- 如果用户已登录，显示用户名 -->
+      {% if user_name %}
+          <span id="username">您好，{{ user_name }}&nbsp<a href="{% url 'APP:logout' %}" style="color: white">退出登录</a></span>
+      {% else %}
+          <span id="username"><a href="{% url 'APP:login' %}" style="color: white">请先登录</a></span>
+      {% endif %}
+
+  </div>
+  <!-- 创建一个图标，用于在小屏幕上打开和关闭导航栏 -->
+  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+{#搜索功能#}
+<!-- 创建一个容器，设置最大宽度为600px，居中显示 -->
+<div class="container2">
+  <!-- 创建一个搜索框，使用search-box类来实现自定义的样式 -->
+  <div class="search-box">
+    <!-- 创建一个输入框，使用search-input类来实现自定义的样式，设置placeholder属性为请输入搜索内容 -->
+    <input type="search" id="search-input" class="search-input" placeholder="请输入搜索内容">
+    <!-- 创建一个图标，使用search-icon类来实现自定义的样式，添加onclick属性为search()，表示点击时调用search函数 -->
+    <span class="search-icon" onclick="search()">&#128269;</span>
+  </div>
+</div>
+<div class="container">
+    <ul class="list">
+    {% for food_name, food_path in items %}
+        <li class="item">
+        <!-- 添加一个flip-box容器 -->
+        <div class="flip-box">
+            <!-- 添加一个flip-box-inner容器 -->
+            <div class="flip-box-inner">
+                <!-- 添加一个flip-box-front容器，放置图片 -->
+                <div class="flip-box-front">
+                    <img src="{{ food_path }}" class="image_food">
+                    <span class="name">{{ food_name }}</span>
+                    {% if food_name in like_food_list %}
+                        <span class="like active" data-id="{{ food_name }}">❤</span>
+                    {% else %}
+                        <span class="like" data-id="{{ food_name }}">❤</span>
+                    {% endif %}
+                </div>
+                <!-- 添加一个flip-box-back容器，放置文字 -->
+                <div class="flip-box-back">
+                    <p>{{ food_introduction|get_item:food_name }}</p>
+                </div>
+            </div>
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+
+</body>
+</html>

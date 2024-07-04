@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/guess_youlike.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/all_dishes.css">
+    <title>猜您喜欢</title>
+    <!-- 加载图标库以在小屏幕上显示汉堡菜单（栏） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- 创建一个导航栏容器 -->
+<div class="navbar" id="myNavbar">
+    <!-- 创建一个链接列表 -->
+    <ul class="navlist">
+        <!-- 创建一个越南美食推荐系统的文字 -->
+        <li><span class="recommend">越南美食推荐系统</span></li>
+        <!-- 创建一个链接到所有菜品展览的链接 -->
+        <li><a href="{% url 'APP:all_dishes' %}">所有菜品展览</a></li>
+        <!-- 创建一个链接到数据可视化的链接 -->
+        <li><a href="{% url 'APP:data_visualization' %}">数据可视化</a></li>
+        <!-- 创建一个链接到所有用户喜欢列表的链接 -->
+        <li><a href="{% url 'APP:all_user' %}">喜欢列表</a></li>
+        <!-- 创建一个链接到猜您喜欢的链接 -->
+        <li><a href="{% url 'APP:guess_youlike' %}">猜您喜欢
+            <hr>
+        </a></li>
+    </ul>
+    <!-- 创建一个登录信息区域 -->
+    <div class="login-info">
+        <!-- 如果用户已登录，显示用户名 -->
+        {% if user_name %}
+            <span id="username">您好，{{ user_name }}&nbsp<a href="{% url 'APP:logout' %}"
+                                                            style="color: white">退出登录</a></span>
+        {% else %}
+            <span id="username"><a href="{% url 'APP:login' %}" style="color: white">请先登录</a></span>
+        {% endif %}
+
+    </div>
+    <!-- 创建一个图标，用于在小屏幕上打开和关闭导航栏 -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<div style="justify-content: center;display: flex;margin: 15px"><h3>以下是推荐给您您可能喜欢的越南美食</h3></div>
+
+<div class="container">
+    <ul class="list">
+        {% for food_name, food_path in items %}
+            <li class="item">
+            <img src="{{ food_path }}">
+            <span class="name">{{ food_name }}</span>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

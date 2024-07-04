@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>添加美食</title>
+    <style>
+        /* 设置页面居中 */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* 设置图片上传按钮样式 */
+        #img {
+            display: none;
+        }
+
+        #img-label {
+            border: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* 设置菜品种类选择框样式 */
+        .category {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        /* 设置简介输入框样式 */
+        #intro {
+            width: 80%;
+            height: 100px;
+        }
+
+        /* 设置提交按钮样式 */
+        #submit {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            float: left;
+        }
+
+        /* 设置返回按钮样式 */
+        .backbtn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+            float: left;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>添加美食</h1>
+    <form id="form" action="{% url 'APP:receive_image' %}" method="post" enctype="multipart/form-data">
+        <!-- 图片上传功能 -->
+        上传图片：<label for="img" id="img-label">选择图片</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <br>
+        <!-- 菜品名称上传功能 -->
+        <div style="margin-top: 20px">
+            <label for="food_name">美食名称：</label>
+            <input type="text" id="food_name" name="food_name" required>
+        </div>
+        <!-- 菜品种类选择功能 -->
+        选择菜品种类（可选择多种）：
+        <div class="category">
+            <input type="checkbox" id="main" name="category" value="staple">
+            <label for="main">主食</label>
+        </div>
+        <div class="category">
+            <input type="checkbox" id="drink" name="category" value="drink">
+            <label for="drink">饮品</label>
+        </div>
+        <div class="category">
+            <input type="checkbox" id="dish" name="category" value="dishes">
+            <label for="dish">菜品</label>
+        </div>
+        <div class="category">
+            <input type="checkbox" id="dessert" name="category" value="dessert">
+            <label for="dessert">甜点</label>
+        </div>
+        <br>
+        <!-- 简介输入功能 -->
+        <label for="intro">输入简介：</label>
+        <br>
+        <textarea id="intro" name="intro" placeholder="请输入菜品简介"></textarea>
+        <br>
+        <!-- 提交按钮功能 -->
+        <button onclick="window.history.back(); return false;" class="backbtn">
+            返回
+        </button>
+        <input type="submit" id="submit" value="提交">
+
+    </form>
+</div>
+<script>
+    // 获取图片上传按钮和图片标签
+    var img = document.getElementById("img");
+    var imgLabel = document.getElementById("img-label");
+
+    // 当用户选择图片时，显示图片文件名
+    img.addEventListener("change", function () {
+        if (this.files && this.files[0]) {
+            imgLabel.textContent = this.files[0].name;
+        }
+    });
+</script>
+</body>
+</html>
